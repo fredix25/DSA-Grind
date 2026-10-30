@@ -1,0 +1,39 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+/* ===== CENTRAL THEME TOKENS (reference palette) ===== */
+:root{
+  --page-background:#DCE5FF; --dashboard-background:#F0F1FF; --main-surface:#F5F6FF;
+  --sidebar-background:#111633; --sidebar-secondary:#19203F; --sidebar-active:#253E91; --sidebar-border:#303B70;
+  --header-background:#27366F; --header-search-background:#303B78;
+  --card-background:#F4F5FF; --card-background-secondary:#E9EDFF; --card-border:#D5DCFF;
+  --text-primary:#111638; --text-secondary:#505A83; --text-muted:#8790B3; --text-on-dark:#FFFFFF;
+  --purple:#7138FF; --deep-purple:#4218D9; --electric-blue:#258DFF; --cyan:#38C8F5; --green:#18C7A0; --orange:#FFAA35; --red:#FF575D;
+  --dark-card-background:#151B3D; --dark-card-secondary:#202B64; --dark-card-end:#273B87;
+  --quote-gradient-start:#241477; --quote-gradient-middle:#4921C5; --quote-gradient-end:#1878F5;
+  --progress-track:#D8DCFA;
+  --stat-streak:#FCE8EF; --stat-goal:#EEEAFE; --stat-progress:#E1F6FC;
+}
+/* Dark theme only re-colors the LIGHT surfaces; sidebar, header, dark cards and banner keep the reference colors. */
+.dark{
+  --page-background:#0A0F24; --dashboard-background:#0F1744; --main-surface:#101A4D;
+  --card-background:#18215F; --card-background-secondary:#202B64; --card-border:#2C3A80;
+  --text-primary:#F1F3FF; --text-secondary:#B8C0E6; --progress-track:#2A3570;
+  --stat-streak:#3A1F4F; --stat-goal:#2A2670; --stat-progress:#143A4A;
+}
+body{font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;color:var(--text-primary);@apply antialiased}
+.shell{min-height:100vh;background:var(--page-background)}
+.app{@apply mx-auto flex max-w-[1500px] flex-col gap-3 lg:h-[calc(100vh-1.5rem)] lg:flex-row;}
+.side{background:var(--sidebar-background);color:var(--text-on-dark);@apply rounded-3xl shadow-[0_20px_50px_rgba(17,22,51,.35)] lg:w-60 lg:shrink-0 lg:overflow-y-auto;}
+.panel{background:var(--dashboard-background);@apply min-w-0 flex-1 rounded-3xl shadow-[0_20px_50px_rgba(17,22,51,.2)];}
+.panel .text-slate-500{color:var(--text-secondary)} .panel .text-slate-400{color:var(--text-muted)}
+.card{background:var(--card-background);border:1px solid var(--card-border);color:var(--text-primary);@apply rounded-2xl p-4 shadow-[0_4px_18px_rgba(60,70,200,.10)] transition;}
+.tile{background:var(--card-background-secondary);@apply rounded-2xl p-3;}
+.btn{border:1px solid var(--card-border);@apply inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-medium transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500;}
+.btn-primary{background:linear-gradient(90deg,var(--purple),var(--deep-purple));color:#fff;border-color:transparent}
+.dark-card{background:linear-gradient(135deg,var(--dark-card-background),var(--dark-card-end));color:#fff;@apply rounded-2xl p-5 shadow-[0_8px_26px_rgba(39,59,135,.4)];}
+.ring-card{background:var(--dark-card-background);color:#fff;@apply rounded-2xl p-4 shadow-[0_8px_26px_rgba(21,27,61,.4)];}
+.header-bar{background:var(--header-background);color:#fff;border:1px solid var(--sidebar-border);@apply flex items-center gap-3 rounded-2xl px-4 py-2.5;}
+.header-search{background:var(--header-search-background);border:1px solid var(--sidebar-border);@apply flex flex-1 items-center gap-2 rounded-full px-4 py-2;}
+.header-btn{background:var(--header-search-background);border:1px solid var(--sidebar-border);@apply rounded-full;}
+@keyframes toastIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+.toast-in{animation:toastIn .25s ease-out}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
