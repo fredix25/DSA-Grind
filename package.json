@@ -3,14 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "test": "vitest run",
-    "check-links": "node scripts/check-links.mjs",
-    "lint": "oxlint",
-    "preview": "vite preview"
-  },
+  
+"scripts": {
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "test": "vitest run",
+  "check-links": "node scripts/check-links.mjs",
+  "lint": "oxlint",
+  "preview": "vite preview",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+},
   "dependencies": {
     "lucide-react": "^1.63.0",
     "react": "^19.3.1",
@@ -22,6 +25,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "autoprefixer": "^10.6.2",
+    "gh-pages": "^6.3.0",
     "oxlint": "^1.89.0",
     "postcss": "^8.5.32",
     "tailwindcss": "^3.4.19",
